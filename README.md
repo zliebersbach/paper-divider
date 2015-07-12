@@ -1,5 +1,5 @@
 # paper-divider
-A material design divider made in Polymer.
+A Material Design divider made in Polymer.
 
 ## Usage
 `paper-divider` should be imported the same as any other Polymer element.
