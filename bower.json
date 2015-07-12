@@ -6,8 +6,8 @@
 	"authors": [
 		"kevin-sarox <kevin@sarox.com.au>"
 	],
-	"dependencies": [
+	"dependencies": {
 		"polymer": "Polymer/polymer#master"
-	],
+	},
 	"main": "paper-divider.html"
 }
