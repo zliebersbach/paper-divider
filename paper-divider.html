@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<link rel="import" href="/bower_components/polymer/polymer.html">
+
+<dom-module id="paper-divider">
+    <style>
+        :host {
+            display: block;
+            width: 100%; height: 1px;
+            background: rgba(0,0,0,.12);
+        }
+        :host.margin {
+            margin: 16px 0;
+        }
+        :host.relative {
+            position: relative;
+            top: -1px;
+        }
+    </style>
+
+    <template></template>
+</dom-module>
+
+<script>
+    Polymer({
+        is: "paper-divider",
+        properties: {
+            margin: {
+                value: false,
+                type: Boolean,
+                observer: "_marginChanged"
+            },
+            relative: {
+                value: false,
+                type: Boolean,
+                observer: "_relativeChanged"
+            }
+        },
+        _marginChanged: function (newValue, oldValue) {
+            this.toggleClass("margin", newValue);
+        },
+        _relativeChanged: function (newValue, oldValue) {
+            this.toggleClass("relative", newValue);
+        }
+    });
+</script>
