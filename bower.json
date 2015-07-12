@@ -1,0 +1,13 @@
+{
+	"name": "paper-divider",
+	"version": "1.0.0",
+	"description": "A Material Design divider made in Polymer.",
+	"license": "MIT",
+	"authors": [
+		"kevin-sarox <kevin@sarox.com.au>"
+	],
+	"dependencies": [
+		"polymer": "Polymer/polymer#master"
+	],
+	"main": "paper-divider.html"
+}
