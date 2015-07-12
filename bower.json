@@ -7,7 +7,7 @@
 		"kevin-sarox <kevin@sarox.com.au>"
 	],
 	"dependencies": {
-		"polymer": "Polymer/polymer#master"
+		"polymer": "Polymer/polymer^1.0.0"
 	},
 	"main": "paper-divider.html"
 }
