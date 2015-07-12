@@ -9,5 +9,6 @@
 	"dependencies": {
 		"polymer": "Polymer/polymer^1.0.0"
 	},
-	"main": "paper-divider.html"
+	"main": "paper-divider.html",
+	"ignore": []
 }
