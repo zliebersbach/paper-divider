@@ -4,7 +4,7 @@
 	"description": "A Material Design divider made in Polymer.",
 	"license": "MIT",
 	"authors": [
-		"kevin-sarox <kevin@sarox.com.au>"
+		"Wincinderith <kevin@sarox.com.au>"
 	],
 	"dependencies": {
 		"polymer": "Polymer/polymer^1.0.0"
