@@ -1,0 +1,23 @@
+{
+  "name": "paper-divider",
+  "version": "1.1.0",
+  "authors": [
+    "Kevin Boxhoorn <kevinboxhoorn@yahoo.com>"
+  ],
+  "description": "Polymer element that provides a Material Design divider.",
+  "main": "paper-divider.html",
+  "license": "GPL-3.0",
+  "homepage": "https://github.com/wincinderith/paper-divider",
+  "ignore": [
+    "/.*",
+    "/demo/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.0.0",
+    "paper-styles": "PolymerElements/paper-styles#^1.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "*"
+  }
+}

@@ -1,0 +1,88 @@
+<!doctype html>
+<!-- @license
+paper-divider, a Polymer element that provides a Material Design divider.
+Copyright (C) 2016  Kevin Boxhoorn
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+	<script src="../../web-component-tester/browser.js"></script>
+	<link rel="import" href="../paper-divider.html">
+
+	<style is="custom-style">
+		paper-divider.styled {
+			--divider-color: #212121;
+		}
+	</style>
+</head>
+<body>
+	<test-fixture id="paper-divider">
+		<template>
+			<paper-divider></paper-divider>
+		</template>
+	</test-fixture>
+
+	<test-fixture id="paper-divider-styled">
+		<template>
+			<paper-divider class="styled"></paper-divider>
+		</template>
+	</test-fixture>
+
+	<script>
+		let getStyleValue = (elem, prop) => {
+			return window.getComputedStyle(elem, null).getPropertyValue(prop);
+		};
+
+		suite("core tests", () => {
+			let paperDivider;
+			setup(() => {
+				paperDivider = fixture("paper-divider");
+			});
+
+			test("has correct dimensions", () => {
+				expect(paperDivider.getBoundingClientRect().height).to.equal(1);
+				expect(getStyleValue(paperDivider, "margin")).to.equal("0px");
+			});
+
+			test("can sit in previous element", () => {
+				paperDivider.relative = true;
+				expect(getStyleValue(paperDivider, "position")).to.equal("relative");
+				expect(getStyleValue(paperDivider, "top")).to.equal("-1px");
+			});
+
+			test("can be given a margin", () => {
+				paperDivider.margin = true;
+				expect(getStyleValue(paperDivider, "margin")).to.equal("16px 0px");
+			});
+		});
+
+		suite("style tests", () => {
+			let styledPaperDivider;
+			setup(() => {
+				styledPaperDivider = fixture("paper-divider-styled");
+			});
+
+			test("can set color through CSS", () => {
+				expect(getStyleValue(styledPaperDivider, "background-color")).to.equal("rgb(33, 33, 33)");
+			});
+		})
+	</script>
+</body>
+</html>

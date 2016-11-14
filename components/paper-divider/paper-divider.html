@@ -1,0 +1,94 @@
+<!doctype html>
+<!-- @license
+paper-divider, a Polymer element that provides a Material Design divider.
+Copyright (C) 2016  Kevin Boxhoorn
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+Polymer element that provides a Material Design divider. It can be shown in the
+bottom of the previous element in the DOM (useful for lists), or be given a
+margin on the top and bottom.
+
+### Example
+
+The basic divider looks like this:
+
+    <paper-divider></paper-divider>
+
+To either make it sit in the bottom of the previous element in the DOM, or give
+it a margin:
+
+    <paper-divider relative></paper-divider>
+    <paper-divider margin></paper-divider>
+
+### Styling
+
+The following custom properties and mixins are available for styling:
+
+Custom property   | Description   | Default
+------------------|---------------|-------------------
+`--divider-color` | Divider color | `rgba(0,0,0,.12)`
+@demo
+-->
+<dom-module id="paper-divider">
+    <template>
+		<style>
+			:host {
+				display: block;
+				width: 100%; height: 1px;
+				background: var(--divider-color, rgba(0,0,0,.12));
+			}
+			:host(.paper-divider-margin) {
+				margin: 16px 0;
+			}
+			:host(.paper-divider-relative) {
+				position: relative;
+				top: -1px;
+			}
+		</style>
+	</template>
+
+	<script>
+		Polymer({
+			is: "paper-divider",
+			properties: {
+				/** Gives the divider a 16px margin on the top and bottom. */
+				margin: {
+					value: false,
+					type: Boolean,
+					observer: "_marginChanged"
+				},
+				/**
+				 * Makes the divider sit in the bottom of the previous element
+				 * in the DOM by using `position: relative` and `top: -1px`.
+				 */
+				relative: {
+					value: false,
+					type: Boolean,
+					observer: "_relativeChanged"
+				}
+			},
+			_marginChanged: function (newValue, oldValue) {
+				this.toggleClass("paper-divider-margin", newValue);
+			},
+			_relativeChanged: function (newValue, oldValue) {
+				this.toggleClass("paper-divider-relative", newValue);
+			}
+		});
+	</script>
+</dom-module>
