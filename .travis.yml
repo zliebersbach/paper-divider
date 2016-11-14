@@ -11,7 +11,7 @@ before_script:
 - bower install
 script: xvfb-run wct
 after_success:
-- openssl aes-256-cbc -K $encrypted_9c4566ee947d_key -iv $encrypted_9c4566ee947d_iv -in .travis/key_deploy.tar.gz.enc -out .travis/key_deploy.tar.gz -d # decrypt deploy key
+- openssl aes-256-cbc -K $encrypted_6e30d249af57_key -iv $encrypted_6e30d249af57_iv -in .travis/key_deploy.tar.gz.enc -out .travis/key_deploy.tar.gz -d # decrypt deploy key
 - tar -xvzf .travis/key_deploy.tar.gz -C .travis # extract deploy key
 - eval "$(ssh-agent -s)" # start the ssh agent
 - chmod 600 .travis/key_deploy
