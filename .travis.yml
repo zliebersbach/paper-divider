@@ -1,0 +1,22 @@
+language: node_js
+node_js: stable
+dist: trusty
+sudo: required
+before_script:
+- wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+- sudo sh -c "echo \"deb http://dl.google.com/linux/chrome/deb/ stable main\" >> /etc/apt/sources.list.d/google.list"
+- sudo apt-get update
+- sudo apt-get install google-chrome-stable
+- npm install -g bower web-component-tester
+- bower install
+script: xvfb-run wct
+after_success:
+- openssl aes-256-cbc -K $encrypted_9c4566ee947d_key -iv $encrypted_9c4566ee947d_iv -in .travis/key_deploy.tar.gz.enc -out .travis/key_deploy.tar.gz -d # decrypt deploy key
+- tar -xvzf .travis/key_deploy.tar.gz -C .travis # extract deploy key
+- eval "$(ssh-agent -s)" # start the ssh agent
+- chmod 600 .travis/key_deploy
+- ssh-add .travis/key_deploy # add deploy key to agent
+- git clone https://github.com/Polymer/tools.git # clone polymer tools
+- mkdir tmp
+- cd tmp
+- ../tools/bin/gp.sh ${TRAVIS_REPO_SLUG/\// } # publish gh-pages
