@@ -20,8 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 <link rel="import" href="../polymer/polymer.html">
 
 <!--
-Polymer element that provides a Material Design divider. It can be shown in the
-bottom of the previous element in the DOM (useful for lists), or be given a
+Polymer element that provides a Material Design divider. It can be given a
 margin on the top and bottom.
 
 ### Example
@@ -30,10 +29,8 @@ The basic divider looks like this:
 
     <paper-divider></paper-divider>
 
-To either make it sit in the bottom of the previous element in the DOM, or give
-it a margin:
+To give it a margin, simply set the `margin` property:
 
-    <paper-divider relative></paper-divider>
     <paper-divider margin></paper-divider>
 
 ### Styling
@@ -42,53 +39,45 @@ The following custom properties and mixins are available for styling:
 
 Custom property   | Description   | Default
 ------------------|---------------|-------------------
-`--divider-color` | Divider color | `rgba(0,0,0,.12)`
+`--paper-divider-color` | Divider color | `rgba(0,0,0,.12)`
 @demo
 -->
 <dom-module id="paper-divider">
-    <template>
+	<template>
 		<style>
 			:host {
 				display: block;
-				width: 100%; height: 1px;
-				background: var(--divider-color, rgba(0,0,0,.12));
-			}
-			:host(.paper-divider-margin) {
-				margin: 16px 0;
-			}
-			:host(.paper-divider-relative) {
 				position: relative;
-				top: -1px;
+			}
+			:host(:after) {
+				content: "";
+				position: absolute;
+				left: 0; right: 0;
+				top: -1px; bottom: 0;
+				background: var(--paper-divider-color, rgba(0,0,0,.12));
+			}
+
+			:host([margin]) {
+				margin: 8px 0;
 			}
 		</style>
 	</template>
 
 	<script>
-		Polymer({
-			is: "paper-divider",
-			properties: {
-				/** Gives the divider a 16px margin on the top and bottom. */
-				margin: {
-					value: false,
-					type: Boolean,
-					observer: "_marginChanged"
-				},
-				/**
-				 * Makes the divider sit in the bottom of the previous element
-				 * in the DOM by using `position: relative` and `top: -1px`.
-				 */
-				relative: {
-					value: false,
-					type: Boolean,
-					observer: "_relativeChanged"
+		class PaperDividerElement extends Polymer.Element {
+			static get is() { return "paper-divider"; }
+			static get properties() {
+				return {
+					/** Gives the divider an 8px margin on the top and bottom. */
+					"margin": {
+						value: false,
+						type: Boolean,
+						reflectToAttribute: true
+					}
 				}
-			},
-			_marginChanged: function (newValue, oldValue) {
-				this.toggleClass("paper-divider-margin", newValue);
-			},
-			_relativeChanged: function (newValue, oldValue) {
-				this.toggleClass("paper-divider-relative", newValue);
 			}
-		});
+		}
+
+		window.customElements.define(PaperDividerElement.is, PaperDividerElement);
 	</script>
 </dom-module>
