@@ -48,8 +48,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	</test-fixture>
 
 	<script>
-		let getStyleValue = (elem, prop) => {
-			return window.getComputedStyle(elem, null).getPropertyValue(prop);
+		let getStyleValue = (elem, prop, pseudoElem) => {
+			return window.getComputedStyle(elem, pseudoElem).getPropertyValue(prop);
 		};
 
 		suite("core tests", () => {
@@ -76,7 +76,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			});
 
 			test("can set color through CSS", () => {
-				expect(getStyleValue(styledPaperDivider, "background-color")).to.equal("rgb(33, 33, 33)");
+				expect(getStyleValue(styledPaperDivider, "background-color", ":after")).to.equal("rgb(33, 33, 33)");
 			});
 		})
 	</script>
