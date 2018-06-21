@@ -26,11 +26,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<script src="../../web-component-tester/browser.js"></script>
 	<link rel="import" href="../paper-divider.html">
 
-	<style is="custom-style">
-		paper-divider.styled {
-			--divider-color: #212121;
-		}
-	</style>
+	<custom-style>
+		<style is="custom-style">
+			paper-divider.styled {
+				--paper-divider-color: #212121;
+			}
+		</style>
+	</custom-style>
 </head>
 <body>
 	<test-fixture id="paper-divider">
@@ -46,8 +48,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	</test-fixture>
 
 	<script>
-		let getStyleValue = (elem, prop) => {
-			return window.getComputedStyle(elem, null).getPropertyValue(prop);
+		let getStyleValue = (elem, prop, pseudoElem) => {
+			return window.getComputedStyle(elem, pseudoElem).getPropertyValue(prop);
 		};
 
 		suite("core tests", () => {
@@ -74,7 +76,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 			});
 
 			test("can set color through CSS", () => {
-				expect(getStyleValue(styledPaperDivider, "background-color")).to.equal("rgb(33, 33, 33)");
+				expect(getStyleValue(styledPaperDivider, "background-color", ":after")).to.equal("rgb(33, 33, 33)");
 			});
 		})
 	</script>
