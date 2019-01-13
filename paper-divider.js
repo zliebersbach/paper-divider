@@ -1,5 +1,4 @@
-<!doctype html>
-<!-- @license
+/** @license
 paper-divider, a Polymer element that provides a Material Design divider.
 Copyright (C) 2016  Kevin Boxhoorn
 
@@ -15,11 +14,11 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
--->
+*/
 
-<link rel="import" href="../polymer/polymer.html">
+import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
 
-<!--
+/**
 Polymer element that provides a Material Design divider. It can be given a
 margin on the top and bottom.
 
@@ -41,43 +40,41 @@ Custom property   | Description   | Default
 ------------------|---------------|-------------------
 `--paper-divider-color` | Divider color | `rgba(0,0,0,.12)`
 @demo
--->
-<dom-module id="paper-divider">
-	<template>
-		<style>
-			:host {
-				display: block;
-				position: relative;
-			}
-			:host::after {
-				content: "";
-				position: absolute;
-				left: 0; right: 0;
-				top: -1px; bottom: 0;
-				background: var(--paper-divider-color, rgba(0,0,0,.12));
-			}
+*/
+class PaperDividerElement extends PolymerElement {
+    static get is() { return "paper-divider"; }
+    static get properties() {
+        return {
+            /** Gives the divider an 8px margin on the top and bottom. */
+            "margin": {
+                value: false,
+                type: Boolean,
+                reflectToAttribute: true
+            }
+        }
+    }
+    static get template() {
+        return html`
+            <style>
+                :host {
+                    display: block;
+                    position: relative;
+                }
 
-			:host([margin]) {
-				margin: 8px 0;
-			}
-		</style>
-	</template>
+                :host::after {
+                    content: "";
+                    position: absolute;
+                    left: 0; right: 0;
+                    top: -1px; bottom: 0;
+                    background: var(--paper-divider-color, rgba(0,0,0,.12));
+                }
 
-	<script>
-		class PaperDividerElement extends Polymer.Element {
-			static get is() { return "paper-divider"; }
-			static get properties() {
-				return {
-					/** Gives the divider an 8px margin on the top and bottom. */
-					"margin": {
-						value: false,
-						type: Boolean,
-						reflectToAttribute: true
-					}
-				}
-			}
-		}
+                :host([margin]) {
+                    margin: 8px 0;
+                }
+            </style>
+`;
+    }
+}
 
-		window.customElements.define(PaperDividerElement.is, PaperDividerElement);
-	</script>
-</dom-module>
+window.customElements.define(PaperDividerElement.is, PaperDividerElement);

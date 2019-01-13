@@ -22,9 +22,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-	<script src="../../webcomponentsjs/webcomponents-loader.js"></script>
-	<script src="../../web-component-tester/browser.js"></script>
-	<link rel="import" href="../paper-divider.html">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
+
+    <script type="module" src="../paper-divider.js"></script>
 
 	<custom-style>
 		<style is="custom-style">
@@ -47,7 +48,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		</template>
 	</test-fixture>
 
-	<script>
+	<script type="module">
 		let getStyleValue = (elem, prop, pseudoElem) => {
 			return window.getComputedStyle(elem, pseudoElem).getPropertyValue(prop);
 		};
@@ -55,28 +56,28 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		suite("core tests", () => {
 			let paperDivider;
 			setup(() => {
-				paperDivider = fixture("paper-divider");
+						paperDivider = fixture("paper-divider");
 			});
 
 			test("has correct dimensions", () => {
-				expect(paperDivider.getBoundingClientRect().height).to.equal(0);
-				expect(getStyleValue(paperDivider, "margin")).to.equal("0px");
+						expect(paperDivider.getBoundingClientRect().height).to.equal(0);
+						expect(getStyleValue(paperDivider, "margin")).to.equal("0px");
 			});
 
 			test("can be given a margin", () => {
-				paperDivider.margin = true;
-				expect(getStyleValue(paperDivider, "margin")).to.equal("8px 0px");
+						paperDivider.margin = true;
+						expect(getStyleValue(paperDivider, "margin")).to.equal("8px 0px");
 			});
 		});
 
 		suite("style tests", () => {
 			let styledPaperDivider;
 			setup(() => {
-				styledPaperDivider = fixture("paper-divider-styled");
+						styledPaperDivider = fixture("paper-divider-styled");
 			});
 
 			test("can set color through CSS", () => {
-				expect(getStyleValue(styledPaperDivider, "background-color", ":after")).to.equal("rgb(33, 33, 33)");
+						expect(getStyleValue(styledPaperDivider, "background-color", ":after")).to.equal("rgb(33, 33, 33)");
 			});
 		})
 	</script>
