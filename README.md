@@ -1,6 +1,37 @@
-# paper-divider
-[![Build Status](https://travis-ci.org/wincinderith/paper-divider.svg?branch=master)](https://travis-ci.org/wincinderith/paper-divider)
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/wincinderith/paper-divider)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@cwmr/paper-divider)
 
-Polymer element that provides a Material Design divider.
-Read the docs [here](https://wincinderith.github.io/paper-divider).
+# \<paper-divider\>
+
+Material Design input control for a collection of tags
+
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script type="module" href="paper-divider.js"></script>
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<paper-divider></paper-divider>
+```
+
+## Install the Polymer-CLI
+
+First, make sure you have the [Polymer CLI](https://www.npmjs.com/package/polymer-cli) installed. Then run `polymer serve` to serve your element locally.
+
+## Viewing Your Element
+
+```
+$ polymer serve
+```
+
+## Running Tests
+
+```
+$ polymer test
+```
+
+Your application is already set up to be tested via [web-component-tester](https://github.com/Polymer/web-component-tester). Run `polymer test` to run your application's test suite locally.
