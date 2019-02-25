@@ -3,3 +3,5 @@ bower_components/
 
 # Secret files
 .travis/key_deploy.tar.gz
+
+node_modules
