@@ -24,12 +24,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 	<script src="../../webcomponentsjs/webcomponents-loader.js"></script>
 	<script src="../../web-component-tester/browser.js"></script>
-	<link rel="import" href="../paper-divider.html">
+	<script type="module" src="../paper-divider.js"></script>
 
 	<custom-style>
-		<style is="custom-style">
-			paper-divider.styled {
-				--paper-divider-color: #212121;
+	<script src="../../@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>owser.js"></script>
 			}
 		</style>
 	</custom-style>
@@ -55,30 +53,37 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		suite("core tests", () => {
 			let paperDivider;
 			setup(() => {
-				paperDivider = fixture("paper-divider");
-			});
+	<script type="module">
+import '../paper-divider.js';
+let getStyleValue = (elem, prop, pseudoElem) => {
+    return window.getComputedStyle(elem, pseudoElem).getPropertyValue(prop);
+};
 
-			test("has correct dimensions", () => {
+suite("core tests", () => {
+    let paperDivider;
+    setup(() => {
+				paperDivider = fixture("paper-divider");
+    });
+
+    test("has correct dimensions", () => {
 				expect(paperDivider.getBoundingClientRect().height).to.equal(0);
 				expect(getStyleValue(paperDivider, "margin")).to.equal("0px");
-			});
+    });
 
-			test("can be given a margin", () => {
+    test("can be given a margin", () => {
 				paperDivider.margin = true;
 				expect(getStyleValue(paperDivider, "margin")).to.equal("8px 0px");
-			});
-		});
+    });
+});
 
-		suite("style tests", () => {
-			let styledPaperDivider;
-			setup(() => {
+suite("style tests", () => {
+    let styledPaperDivider;
+    setup(() => {
 				styledPaperDivider = fixture("paper-divider-styled");
-			});
+    });
 
-			test("can set color through CSS", () => {
+    test("can set color through CSS", () => {
 				expect(getStyleValue(styledPaperDivider, "background-color", ":after")).to.equal("rgb(33, 33, 33)");
-			});
-		})
-	</script>
-</body>
-</html>
+    });
+})
+</script>
